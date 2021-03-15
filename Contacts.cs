@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC2_Add_NewContact_toAddress_Book
+namespace UC3_EditContact_By_Name
 {
     class Contacts
     {
@@ -30,5 +30,6 @@ namespace UC2_Add_NewContact_toAddress_Book
     {
         public void AddContact(string FirstName, string LastName, string Address, string City, string State, string Zip, string PhoneNumber, string Email);
         public void DisplayContacts();
+        public void EditContact(string FirstName);
     }
 }

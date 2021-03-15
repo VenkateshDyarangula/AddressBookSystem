@@ -1,18 +1,18 @@
 using System;
 
-namespace UC2_Add_NewContact_toAddress_Book
+namespace UC3_EditContact_By_Name
 {
-    class AddressBookMain
+    class Program
     {
         static void Main(string[] args)
         {
             int choice;
             AddressBookBuilder addressBookBuilder = new AddressBookBuilder();
-            string FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email;
-            Console.WriteLine("Welcome to Address Book System \n Enter your choice:");
+            string FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email, NametoSearch;
+            Console.WriteLine("Welcome to Address Book System \n============================\nEnter your choice: \n_________________");
             while (true)
             {
-                Console.WriteLine(" \n 1. Add Contact \n 2. Display Contacts \n 3.Exit");
+                Console.WriteLine(" \n 1.Add Contact \n 2.Display Contacts \n 3.Edit Existing Contact \n 4.Exit");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
                 {
@@ -39,6 +39,11 @@ namespace UC2_Add_NewContact_toAddress_Book
                         addressBookBuilder.DisplayContacts();
                         break;
                     case 3:
+                        Console.WriteLine("Enter Contact First Name to edit details: ");
+                        NametoSearch = Console.ReadLine();
+                        addressBookBuilder.EditContact(NametoSearch);
+                        break;
+                    case 4:
                         Environment.Exit(0);
                         break;
                     default:
@@ -46,6 +51,7 @@ namespace UC2_Add_NewContact_toAddress_Book
                         break;
                 }
             }
+
         }
     }
 }

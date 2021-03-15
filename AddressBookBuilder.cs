@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC2_Add_NewContact_toAddress_Book
+namespace UC3_EditContact_By_Name
 {
     class AddressBookBuilder : IContacts
     {
@@ -11,7 +11,7 @@ namespace UC2_Add_NewContact_toAddress_Book
         {
             this.dictionary = new Dictionary<string, Contacts>();
         }
-        public void AddContact(string FirstName, string LastName, string Address, string City, string State, string  Zip, string PhoneNumber, string Email)
+        public void AddContact(string FirstName, string LastName, string Address, string City, string State, string Zip, string PhoneNumber, string Email)
         {
             Contacts contact = new Contacts(FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email);
             dictionary.Add(FirstName, contact);
@@ -28,6 +28,36 @@ namespace UC2_Add_NewContact_toAddress_Book
                 Console.WriteLine("Zip : " + dict.Value.Zip);
                 Console.WriteLine("Phone Number : " + dict.Value.PhoneNumber);
                 Console.WriteLine("Email : " + dict.Value.Email);
+            }
+        }
+        public void EditContact(string FirstName)
+        {
+            int flag = 1;
+            foreach (KeyValuePair<string, Contacts> dict in dictionary)
+            {
+                if (FirstName.Equals(dict.Key))
+                {
+                    flag = 0;
+                    Console.WriteLine("Enter Last Name : ");
+                    dict.Value.LastName = Console.ReadLine();
+                    Console.WriteLine("Enter Address: ");
+                    dict.Value.Address = Console.ReadLine();
+                    Console.WriteLine("Enter City : ");
+                    dict.Value.City = Console.ReadLine();
+                    Console.WriteLine("Enter State : ");
+                    dict.Value.State = Console.ReadLine();
+                    Console.WriteLine("Enter Zip code : ");
+                    dict.Value.Zip = Console.ReadLine();
+                    Console.WriteLine("Enter Phone Number : ");
+                    dict.Value.PhoneNumber = Console.ReadLine();
+                    Console.WriteLine("Enter Email : ");
+                    dict.Value.Email = Console.ReadLine();
+
+                }
+            }
+            if (flag == 1)
+            {
+                Console.WriteLine("Contact not found!");
             }
         }
     }
