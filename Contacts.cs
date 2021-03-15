@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC3_EditContact_By_Name
+namespace UC4_Delete_Contact_ByName
 {
     class Contacts
     {
@@ -31,5 +31,6 @@ namespace UC3_EditContact_By_Name
         public void AddContact(string FirstName, string LastName, string Address, string City, string State, string Zip, string PhoneNumber, string Email);
         public void DisplayContacts();
         public void EditContact(string FirstName);
+        public void DeleteContact(string FirstName);
     }
 }
