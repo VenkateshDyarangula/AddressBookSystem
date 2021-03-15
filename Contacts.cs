@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AddressBookSystem
+namespace UC2_Add_NewContact_toAddress_Book
 {
     class Contacts
     {
-
         public string FirstName;
         public string LastName;
         public string Address;
@@ -27,5 +26,9 @@ namespace AddressBookSystem
             this.Email = Email;
         }
     }
+    public interface IContacts
+    {
+        public void AddContact(string FirstName, string LastName, string Address, string City, string State, string Zip, string PhoneNumber, string Email);
+        public void DisplayContacts();
+    }
 }
-

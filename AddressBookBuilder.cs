@@ -1,17 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AddressBookSystem
+namespace UC2_Add_NewContact_toAddress_Book
 {
-    class AddressBookBuilder 
+    class AddressBookBuilder : IContacts
     {
         public Dictionary<string, Contacts> dictionary;
         public AddressBookBuilder()
         {
             this.dictionary = new Dictionary<string, Contacts>();
         }
-        public void AddContact(string FirstName, string LastName, string Address, string City, string State, string Zip, string PhoneNumber, string Email)
+        public void AddContact(string FirstName, string LastName, string Address, string City, string State, string  Zip, string PhoneNumber, string Email)
         {
             Contacts contact = new Contacts(FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email);
             dictionary.Add(FirstName, contact);
@@ -28,7 +28,6 @@ namespace AddressBookSystem
                 Console.WriteLine("Zip : " + dict.Value.Zip);
                 Console.WriteLine("Phone Number : " + dict.Value.PhoneNumber);
                 Console.WriteLine("Email : " + dict.Value.Email);
-             
             }
         }
     }
