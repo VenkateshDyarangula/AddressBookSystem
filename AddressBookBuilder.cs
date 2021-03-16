@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC4_Delete_Contact_ByName
+namespace UC5_Add_Multiple_Person_toBook
 {
     class AddressBookBuilder : IContacts
     {
@@ -15,6 +15,7 @@ namespace UC4_Delete_Contact_ByName
         {
             Contacts contact = new Contacts(FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email);
             dictionary.Add(FirstName, contact);
+          
         }
         public void DisplayContacts()
         {
@@ -28,7 +29,9 @@ namespace UC4_Delete_Contact_ByName
                 Console.WriteLine("Zip : " + dict.Value.Zip);
                 Console.WriteLine("Phone Number : " + dict.Value.PhoneNumber);
                 Console.WriteLine("Email : " + dict.Value.Email);
+                Console.WriteLine("-------------------------");
             }
+           
         }
         public void EditContact(string FirstName)
         {

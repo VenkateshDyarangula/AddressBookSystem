@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC4_Delete_Contact_ByName
+namespace UC5_Add_Multiple_Person_toBook
 {
     class Contacts
     {
