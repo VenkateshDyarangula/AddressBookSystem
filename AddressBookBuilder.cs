@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC5_Add_Multiple_Person_toBook
+namespace UC6_add_Multiple_AddressBook
 {
     class AddressBookBuilder : IContacts
     {
@@ -15,7 +15,6 @@ namespace UC5_Add_Multiple_Person_toBook
         {
             Contacts contact = new Contacts(FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email);
             dictionary.Add(FirstName, contact);
-          
         }
         public void DisplayContacts()
         {
@@ -29,9 +28,7 @@ namespace UC5_Add_Multiple_Person_toBook
                 Console.WriteLine("Zip : " + dict.Value.Zip);
                 Console.WriteLine("Phone Number : " + dict.Value.PhoneNumber);
                 Console.WriteLine("Email : " + dict.Value.Email);
-                Console.WriteLine("-------------------------");
             }
-           
         }
         public void EditContact(string FirstName)
         {
