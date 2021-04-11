@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
-namespace UC7_DuplicateCheck_Using_Lambda
+namespace UC8_SearchPersonUsingCityOrState
 {
     class AddressBook
     {
@@ -159,6 +158,23 @@ namespace UC7_DuplicateCheck_Using_Lambda
             else
             {
                 Console.WriteLine("Book Not Found!");
+            }
+        }
+
+        public static void searchPersonUsingCityOrStateInMultipleBooks(string cityOrState)
+        {
+            List<Contact> record = new List<Contact>();
+            foreach (string bookName in Program.addressBookStore.Keys)
+            {
+                record = Program.addressBookStore[bookName];
+                foreach (Contact person in record)
+                {
+                    if (record.Exists(x => x.city == cityOrState || x.state == cityOrState))
+                    {
+                        Console.WriteLine("Book Name : " + bookName);
+                        Console.WriteLine("All Details :" + person.toString());
+                    }
+                }
             }
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC7_DuplicateCheck_Using_Lambda
+namespace UC8_SearchPersonUsingCityOrState
 {
     public class Contact
     {
