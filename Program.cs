@@ -1,63 +1,54 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 
-namespace UC6_add_Multiple_AddressBook
+namespace UC7_DuplicateCheck_Using_Lambda
 {
     class Program
     {
+        public static Dictionary<string, List<Contact>> addressBookStore = new Dictionary<string, List<Contact>>();
 
         static void Main(string[] args)
         {
-            int choice;
-            AddressBookBuilder addressBookBuilder = new AddressBookBuilder();
-            string FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email, NameToSearch, NameToDelete;
-            Console.WriteLine("Welcome to Address Book System \n Enter your choice:");
-            while (true)
+
+            Console.WriteLine("Wellcome To Address Book System Program!");
+            Console.WriteLine("*****************************************");
+            int choice = 0;
+            while (choice != 4)
             {
-                Console.WriteLine(" \n 1. Add Contact \n 2. Display Contacts \n 3. Edit Existing Contact \n 4. Delete a contact \n 5.Exit");
+                Console.WriteLine("1.Add Contacts");
+                Console.WriteLine("2.Edit Existing Contact");
+                Console.WriteLine("3.Delete Person Details");
+                Console.WriteLine("4.close");
                 choice = Convert.ToInt32(Console.ReadLine());
+                //choice = Console.ReadLine();
+
                 switch (choice)
                 {
                     case 1:
-                        Console.WriteLine("Enter First Name : ");
-                        FirstName = Console.ReadLine();
-                        Console.WriteLine("Enter Last Name : ");
-                        LastName = Console.ReadLine();
-                        Console.WriteLine("Enter Address: ");
-                        Address = Console.ReadLine();
-                        Console.WriteLine("Enter City : ");
-                        City = Console.ReadLine();
-                        Console.WriteLine("Enter State : ");
-                        State = Console.ReadLine();
-                        Console.WriteLine("Enter Zip code : ");
-                        Zip = Console.ReadLine();
-                        Console.WriteLine("Enter Phone Number : ");
-                        PhoneNumber = Console.ReadLine();
-                        Console.WriteLine("Enter Email : ");
-                        Email = Console.ReadLine();
-                        addressBookBuilder.AddContact(FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email);
+                        Console.WriteLine("Enter name of the address book in which you want to add record.");
+                        String bookName = Console.ReadLine();
+                        AddressBook.addBook(bookName);
                         break;
                     case 2:
-                        addressBookBuilder.DisplayContacts();
+                        Console.WriteLine("Enter the book name in which you want to Edit data:");
+                        string bookNameHasReocrd = Console.ReadLine();
+                        Console.WriteLine("Enter Person's FirstName to edit data:");
+                        string recordNameToEdit = Console.ReadLine();
+                        AddressBook.edit(bookNameHasReocrd, recordNameToEdit);
                         break;
                     case 3:
-                        Console.WriteLine("Enter Contact First Name to edit details: ");
-                        NameToSearch = Console.ReadLine();
-                        addressBookBuilder.EditContact(NameToSearch);
+                        Console.WriteLine("Enter name of the address book you want to delete record in.");
+                        String bookName1 = Console.ReadLine();
+                        AddressBook.delete(bookName1);
                         break;
                     case 4:
-                        Console.WriteLine("Enter Contact First Name to delete contact: ");
-                        NameToDelete = Console.ReadLine();
-                        addressBookBuilder.DeleteContact(NameToDelete);
-                        break;
-                    case 5:
-                        Environment.Exit(0);
+                        choice = 4;
                         break;
                     default:
-                        Console.WriteLine("Enter Valid Choice:");
+                        Console.WriteLine("Invalid choice !");
                         break;
                 }
             }
-
         }
     }
 }
