@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC11_NameSorting
+namespace UC12_SortingByCityOrStateOrZip
 {
     public class Contact
     {
