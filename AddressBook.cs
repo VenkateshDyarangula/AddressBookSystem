@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
-namespace UC10_FindNo.OfPersonInS0tateOrCity
+namespace UC11_NameSorting
 {
     class AddressBook
     {
@@ -196,5 +197,28 @@ namespace UC10_FindNo.OfPersonInS0tateOrCity
             }
             return count;
         }
+
+        public static void PrintNameInAlphabeticalOrder(string bookName)
+        {
+            if (Program.addressBookStore.ContainsKey(bookName))
+            {
+                List<Contact> book = Program.addressBookStore[bookName];
+               // book.Sort((x, y) => string.Compare(x.first_name, y.first_name));
+               // book.Sort();
+                Console.WriteLine("Book Name : " + bookName);
+                var peopleInOrder = book.OrderBy(person => person.first_name);
+                foreach (Contact person in peopleInOrder)
+                {
+                    Console.WriteLine("All Details :" + person.toString());
+                }
+            }
+            else
+            {
+                Console.WriteLine("Book Not Found!");
+            }
+        }
+
+
+
     }
 }

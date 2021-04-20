@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC10_FindNo.OfPersonInS0tateOrCity
+namespace UC11_NameSorting
 {
     public class Contact
     {
@@ -25,5 +25,7 @@ namespace UC10_FindNo.OfPersonInS0tateOrCity
         {
             return this.first_name == name;
         }
+
+
     }
 }

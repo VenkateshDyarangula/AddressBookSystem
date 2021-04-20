@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UC10_FindNo.OfPersonInS0tateOrCity
+namespace UC11_NameSorting
 {
     public class Program
     {
@@ -11,7 +11,7 @@ namespace UC10_FindNo.OfPersonInS0tateOrCity
         {
 
             Console.WriteLine("Wellcome To Address Book System Program!");
-            Console.WriteLine("*****************************************");
+            Console.WriteLine("=======================================");
             int choice = 0;
             while (choice != 4)
             {
@@ -20,6 +20,7 @@ namespace UC10_FindNo.OfPersonInS0tateOrCity
                 Console.WriteLine("3.Delete Person Details");
                 Console.WriteLine("5.Search persons using city or state");
                 Console.WriteLine("6.Search Number of persons in city or state");
+                Console.WriteLine("7.Enter name of the address book you want to  record in sorting order");
                 Console.WriteLine("4.close");
                 choice = Convert.ToInt32(Console.ReadLine());
 
@@ -57,6 +58,12 @@ namespace UC10_FindNo.OfPersonInS0tateOrCity
                         int numberOfPerson = AddressBook.searchNumberOfPersonUsingCityOrStateInMultipleBooks(cityOrState1);
                         Console.WriteLine("Total number of persons are :" + numberOfPerson);
                         break;
+                    case 7:
+                        Console.WriteLine("Enter name of the address book you want to  record in sorting order");
+                        String bookName2 = Console.ReadLine();
+                        AddressBook.PrintNameInAlphabeticalOrder(bookName2);
+                        break;
+
                     default:
                         Console.WriteLine("Invalid choice !");
                         break;
