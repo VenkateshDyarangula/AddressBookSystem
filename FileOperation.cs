@@ -1,19 +1,22 @@
-﻿using System;
+﻿using CsvHelper;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using System.IO;
-using CsvHelper;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Text;
 
-namespace UC14_ReadWriteFromDataCSV
+namespace UC15ReadWriteToJSONFile
 {
+
     public class FileOperation
     {
 
         public static void ReadFromStreamReader()
         {
-            String path = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\AddressBook.txt";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
+            String path = @"C:\Users\venky\source\repos\Address Book System\UC15ReadWriteToJSONFile\AddressBook.txt";// "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
             try
             {
                 if (File.Exists(path))
@@ -41,7 +44,7 @@ namespace UC14_ReadWriteFromDataCSV
 
         public static void WriteUsingStreamWriter()
         {
-            String path = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\AddressBook.txt";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
+            String path = @"C:\Users\venky\source\repos\Address Book System\UC15ReadWriteToJSONFile\AddressBook.txt";// "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
             try
             {
                 if (File.Exists(path))
@@ -84,8 +87,8 @@ namespace UC14_ReadWriteFromDataCSV
 
         public static void ReadFromCSVReader()
         {
-            string importFilePath = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\ContactData.csv";// "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\ContactData.csv";
-            string exportFilePath = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\exportData.csv"; //"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\exportData.csv";
+            string importFilePath = @"C:\Users\venky\source\repos\Address Book System\UC15ReadWriteToJSONFile\ContactData.csv";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\ContactData.csv";
+            string exportFilePath = @"C:\Users\venky\source\repos\Address Book System\UC15ReadWriteToJSONFile\ExportData.csv";// "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\exportData.csv";
 
             using (var reader = new StreamReader(importFilePath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
@@ -115,9 +118,63 @@ namespace UC14_ReadWriteFromDataCSV
             }
         }
 
+        static string jsonFilePath = @"C:\Users\venky\source\repos\Address Book System\UC15ReadWriteToJSONFile\jsonFile.json";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\jsonFile.json";
+
+        public static void ReadFromJSONFile()
+        {
 
 
+            var jsonData = File.ReadAllText(jsonFilePath);
+            /*  if (jsonData.Length > 0)
+              {
+                  Contact contact = JsonConvert.DeserializeObject<Contact>(jsonData);
+                Console.WriteLine(contact);
+               }
+              else
+                  Console.WriteLine("No Data Avalaible!");*/
+            Console.WriteLine(jsonData);
+
+        }
+
+
+
+
+        public static void WriteIntoJSONFile()
+        {
+
+            Contact person = new Contact();
+            Console.WriteLine("Enter All Details Like: ");
+            Console.WriteLine("Enter First_Name: ");
+            person.first_name = Console.ReadLine();
+            Console.WriteLine("Enter Last Name:");
+            person.last_name = Console.ReadLine();
+            Console.WriteLine("Enter Addree :");
+            person.address = Console.ReadLine();
+            Console.WriteLine("Enter City Name:");
+            person.city = Console.ReadLine();
+            Console.WriteLine("Enter State Name:");
+            person.state = Console.ReadLine();
+            Console.WriteLine("Enter pin Number:");
+            person.zip = Console.ReadLine();
+            Console.WriteLine("Enter Phone Number:");
+            person.phone_number = Console.ReadLine();
+            Console.WriteLine("Enter Email:");
+            person.email = Console.ReadLine();
+
+
+            //   string jsonFilePath = "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\jsonFile.json";
+            var jsonData = JsonConvert.SerializeObject(person);
+            if (File.Exists(jsonFilePath))
+            {
+                File.AppendAllText(jsonFilePath, jsonData + Environment.NewLine);
+            }
+            else
+            {
+                Console.WriteLine("File doesn't exists");
+            }
+
+
+
+        }
     }
-
-
 }

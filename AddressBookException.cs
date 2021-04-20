@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC14_ReadWriteFromDataCSV
+namespace UC15ReadWriteToJSONFile
 {
-
     public class AddressBookException : Exception
     {
         public enum ExceptionType

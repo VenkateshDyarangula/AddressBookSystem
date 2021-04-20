@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UC14_ReadWriteFromDataCSV
+namespace UC15ReadWriteToJSONFile
 {
+
     public class Program
     {
         public static Dictionary<string, List<Contact>> addressBookStore = new Dictionary<string, List<Contact>>();
@@ -25,8 +26,11 @@ namespace UC14_ReadWriteFromDataCSV
                 Console.WriteLine("9.To Read Data from file");
                 Console.WriteLine("10.To Append Data into file");
                 Console.WriteLine("11.To Read Data from CSV file");
+                Console.WriteLine("12.To Read Data JSON  file");
+                Console.WriteLine("13.To Write Data in JSON  file");
                 Console.WriteLine("4.close");
                 choice = Convert.ToInt32(Console.ReadLine());
+
 
                 switch (choice)
                 {
@@ -81,6 +85,12 @@ namespace UC14_ReadWriteFromDataCSV
                         break;
                     case 11:
                         FileOperation.ReadFromCSVReader();
+                        break;
+                    case 12:
+                        FileOperation.ReadFromJSONFile();
+                        break;
+                    case 13:
+                        FileOperation.WriteIntoJSONFile();
                         break;
 
                     default:

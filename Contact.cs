@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC14_ReadWriteFromDataCSV
+namespace UC15ReadWriteToJSONFile
 {
     public class Contact
     {
@@ -25,7 +25,5 @@ namespace UC14_ReadWriteFromDataCSV
         {
             return this.first_name == name;
         }
-
-
     }
 }
