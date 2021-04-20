@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Text;
+using System.IO;
+using CsvHelper;
+using System.Globalization;
+using System.Linq;
 
-namespace UC13ReadWrite
+namespace UC14_ReadWriteFromDataCSV
 {
-
     public class FileOperation
     {
 
         public static void ReadFromStreamReader()
         {
-            String path = "C:\\Users\\venky\\source\\repos\\Address Book System\\UC13ReadWrite\\AddressBook.txt";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
+            String path = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\AddressBook.txt";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
             try
             {
                 if (File.Exists(path))
@@ -39,13 +41,14 @@ namespace UC13ReadWrite
 
         public static void WriteUsingStreamWriter()
         {
-            String path = "C:\\Users\\venky\\source\\repos\\Address Book System\\UC13ReadWrite\\AddressBook.txt";// "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
+            String path = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\AddressBook.txt";//"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\AddreddBook.txt";
             try
             {
                 if (File.Exists(path))
                 {
                     using (StreamWriter sr = File.AppendText(path))
                     {
+
                         Console.WriteLine("Book Name");
                         sr.Write("Book Name  : ");
                         string bookName = Console.ReadLine();
@@ -58,30 +61,6 @@ namespace UC13ReadWrite
                         sr.Write("Last Name  : ");
                         string lname = Console.ReadLine();
                         sr.WriteLine(lname);
-                        Console.WriteLine("Enter Address");
-                        sr.Write("Address :");
-                        string address = Console.ReadLine();
-                        sr.WriteLine(address);
-                        Console.WriteLine("Enter City Name:");
-                        sr.Write("City :");
-                        string city = Console.ReadLine();
-                        sr.WriteLine(city);
-                        Console.WriteLine("Enter State Name:");
-                        sr.Write("State :");
-                        string state = Console.ReadLine();
-                        sr.WriteLine(state);
-                        Console.WriteLine("Enter pin Number:");
-                        sr.Write("Pin :");
-                        string zip = Console.ReadLine();
-                        sr.WriteLine(zip);
-                        Console.WriteLine("Enter Phone Number:");
-                        sr.Write("Phon num :");
-                        string phone_number = Console.ReadLine();
-                        sr.WriteLine(phone_number);
-                        Console.WriteLine("Enter Email:");
-                        sr.Write("Email :");
-                        string email = Console.ReadLine();
-                        sr.WriteLine(email);
 
                         sr.Close();
                         Console.WriteLine(File.ReadAllText(path));
@@ -101,5 +80,44 @@ namespace UC13ReadWrite
 
 
         }
+
+
+        public static void ReadFromCSVReader()
+        {
+            string importFilePath = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\ContactData.csv";// "E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\ContactData.csv";
+            string exportFilePath = @"C:\Users\venky\source\repos\Address Book System\UC14_ReadWriteFromDataCSV\exportData.csv"; //"E:\\AddressBook\\AddressBookSystem\\AddressBookSystem\\AddressBookSystem\\exportData.csv";
+
+            using (var reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<Contact>().ToList();
+                Console.WriteLine("Read data successfully from contaceData csv.");
+                foreach (Contact contactData in records)
+                {
+                    Console.Write("\t" + contactData.first_name);
+                    Console.Write("\t" + contactData.last_name);
+                    Console.Write("\t" + contactData.address);
+                    Console.Write("\t" + contactData.city);
+                    Console.Write("\t" + contactData.state);
+                    Console.Write("\t" + contactData.zip);
+                    Console.Write("\t" + contactData.phone_number);
+                    Console.Write("\t" + contactData.email);
+                    Console.WriteLine();
+                    Console.WriteLine("*******************************Readin from csv file and Write to csv file **********************************");
+                    //Writing csv file
+
+                    using (var writer = new StreamWriter(exportFilePath))
+                    using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
+                    {
+                        csvExport.WriteRecords(records);
+                    }
+                }
+            }
+        }
+
+
+
     }
+
+
 }

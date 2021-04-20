@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace UC13ReadWrite
+namespace UC14_ReadWriteFromDataCSV
 {
     public class Program
     {
@@ -24,6 +24,7 @@ namespace UC13ReadWrite
                 Console.WriteLine("8.To ordered the record by city or state or zip Please enter book name");
                 Console.WriteLine("9.To Read Data from file");
                 Console.WriteLine("10.To Append Data into file");
+                Console.WriteLine("11.To Read Data from CSV file");
                 Console.WriteLine("4.close");
                 choice = Convert.ToInt32(Console.ReadLine());
 
@@ -32,8 +33,7 @@ namespace UC13ReadWrite
                     case 1:
                         Console.WriteLine("Enter name of the address book in which you want to add record.");
                         String bookName = Console.ReadLine();
-                        //AddressBook.addBook(bookName);
-                        FileOperation.WriteUsingStreamWriter();
+                        AddressBook.addBook(bookName);
                         break;
                     case 2:
                         Console.WriteLine("Enter the book name in which you want to Edit data:");
@@ -78,6 +78,9 @@ namespace UC13ReadWrite
                         break;
                     case 10:
                         FileOperation.WriteUsingStreamWriter();
+                        break;
+                    case 11:
+                        FileOperation.ReadFromCSVReader();
                         break;
 
                     default:

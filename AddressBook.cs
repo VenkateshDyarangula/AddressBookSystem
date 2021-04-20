@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UC13ReadWrite
+namespace UC14_ReadWriteFromDataCSV
 {
-
     class AddressBook
     {
 
@@ -35,8 +34,6 @@ namespace UC13ReadWrite
             person.email = Console.ReadLine();
 
             List<Contact> book = Program.addressBookStore[bookName];
-            FileOperation.WriteUsingStreamWriter();
-
             if (book.Exists(x => x.Equals(person.first_name)))
             {
                 Console.WriteLine("Person Allready exist");
@@ -51,10 +48,7 @@ namespace UC13ReadWrite
 
         }
 
-        private static void WriteUsingStreamWriter()
-        {
-            throw new NotImplementedException();
-        }
+
 
         public static void edit(string bookName, string recordNameToEdit)
         {
@@ -264,5 +258,8 @@ namespace UC13ReadWrite
                 Console.WriteLine("Book not found!");
             }
         }
+
+
+
     }
 }
