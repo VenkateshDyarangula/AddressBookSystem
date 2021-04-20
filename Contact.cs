@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UC12_SortingByCityOrStateOrZip
+namespace UC13ReadWrite
 {
     public class Contact
     {
@@ -25,7 +25,5 @@ namespace UC12_SortingByCityOrStateOrZip
         {
             return this.first_name == name;
         }
-
-
     }
 }

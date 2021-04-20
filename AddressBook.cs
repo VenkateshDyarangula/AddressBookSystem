@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UC12_SortingByCityOrStateOrZip
+namespace UC13ReadWrite
 {
+
     class AddressBook
     {
 
@@ -34,6 +35,8 @@ namespace UC12_SortingByCityOrStateOrZip
             person.email = Console.ReadLine();
 
             List<Contact> book = Program.addressBookStore[bookName];
+            FileOperation.WriteUsingStreamWriter();
+
             if (book.Exists(x => x.Equals(person.first_name)))
             {
                 Console.WriteLine("Person Allready exist");
@@ -48,7 +51,10 @@ namespace UC12_SortingByCityOrStateOrZip
 
         }
 
-
+        private static void WriteUsingStreamWriter()
+        {
+            throw new NotImplementedException();
+        }
 
         public static void edit(string bookName, string recordNameToEdit)
         {
